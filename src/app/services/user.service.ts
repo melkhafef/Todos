@@ -23,18 +23,18 @@ export class UserService {
     }));
   }
   addTodo(id: number, todo: Todo) {
-    return this.http.post(`http://localhost:80/user/${id}/todos`, todo);
+    return this.http.post(`https://intense-dusk-99464.herokuapp.com:443/user/${id}/todos`, todo);
   }
   getTodos(id:number) {
-    return this.http.get(`http://localhost:80/user/${id}/todos`);
+    return this.http.get(`https://intense-dusk-99464.herokuapp.com:443/user/${id}/todos`);
   }
   deleteTodo(id:number) {
-    return this.http.delete(`http://localhost:80/todos/${id}`);
+    return this.http.delete(`http://intense-dusk-99464.herokuapp.com:443/todos/${id}`);
   }
   updateTodo(todo:Todo,todoId:number){
-    return this.http.put(`http://localhost:80/todos/${todoId}`, todo)
+    return this.http.put(`https://intense-dusk-99464.herokuapp.com:443/todos/${todoId}`, todo)
   }
   done(todoId:number){
-    return this.http.put('http://localhost:80/todos',{todoId})
+    return this.http.put('https://intense-dusk-99464.herokuapp.com:443/todos',{todoId})
   }
 }
