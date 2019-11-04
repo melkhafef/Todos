@@ -37,6 +37,7 @@ export class TodosComponent implements OnInit {
     this.todo.title = e.path[2].cells[1].innerText;
     this.todo.description = e.path[2].cells[3].innerText;
     this.todoId = parseInt(e.path[2].cells[0].innerText);
+    this.todo.isDone = e.path[2].cells[4].children[0].children[0].checked   ;
   }
   updateTodo(){
     this.userService.updateTodo(this.todo,this.todoId).subscribe(res=>{

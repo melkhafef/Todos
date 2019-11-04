@@ -65,7 +65,7 @@ app.get('/user/:id/todos', function (req, res) {
     })
 })
 app.put('/todos/:id', function (req, res) {
-    let sql = `update todo SET title='${req.body.title}',description='${req.body.description}',duedate='${req.body.duedate}',isdone='${req.body.isdone}'    where id=${req.params.id}`
+    let sql = `update todo SET title='${req.body.title}',description='${req.body.description}',duedate='${req.body.duedate}',isdone=${req.body.isDone}    where id=${req.params.id}`
     conection.query(sql, (err, result) => {
         if (err) throw err;
         res.end();
