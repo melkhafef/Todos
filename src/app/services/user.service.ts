@@ -16,25 +16,25 @@ export class UserService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
   login(user: User) {
-    return this.http.post<any>('http://localhost:3000/login', user).pipe(map(user => {
+    return this.http.post<any>('http://localhost:80/login', user).pipe(map(user => {
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserSubject.next(user);
       return user;
     }));
   }
   addTodo(id: number, todo: Todo) {
-    return this.http.post(`http://localhost:3000/user/${id}/todos`, todo);
+    return this.http.post(`http://localhost:80/user/${id}/todos`, todo);
   }
   getTodos(id:number) {
-    return this.http.get(`http://localhost:3000/user/${id}/todos`);
+    return this.http.get(`http://localhost:80/user/${id}/todos`);
   }
   deleteTodo(id:number) {
-    return this.http.delete(`http://localhost:3000/todos/${id}`);
+    return this.http.delete(`http://localhost:80/todos/${id}`);
   }
   updateTodo(todo:Todo,todoId:number){
-    return this.http.put(`http://localhost:3000/todos/${todoId}`, todo)
+    return this.http.put(`http://localhost:80/todos/${todoId}`, todo)
   }
   done(todoId:number){
-    return this.http.put('http://localhost:3000/todos',{todoId})
+    return this.http.put('http://localhost:80/todos',{todoId})
   }
 }
