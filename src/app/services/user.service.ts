@@ -16,25 +16,25 @@ export class UserService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
   login(user: User) {
-    return this.http.post<any>('http://intense-dusk-99464.herokuapp.com:80/login', user).pipe(map(user => {
+    return this.http.post<any>('https://intense-dusk-99464.herokuapp.com/login', user).pipe(map(user => {
       localStorage.setItem('currentUser', JSON.stringify(user));
       this.currentUserSubject.next(user);
       return user;
     }));
   }
   addTodo(id: number, todo: Todo) {
-    return this.http.post(`http://intense-dusk-99464.herokuapp.com:80/user/${id}/todos`, todo);
+    return this.http.post(`https://intense-dusk-99464.herokuapp.com/user/${id}/todos`, todo);
   }
   getTodos(id:number) {
-    return this.http.get(`http://intense-dusk-99464.herokuapp.com:80/user/${id}/todos`);
+    return this.http.get(`https://intense-dusk-99464.herokuapp.com/user/${id}/todos`);
   }
   deleteTodo(id:number) {
-    return this.http.delete(`http://intense-dusk-99464.herokuapp.com:80/todos/${id}`);
+    return this.http.delete(`http://intense-dusk-99464.herokuapp.com/todos/${id}`);
   }
   updateTodo(todo:Todo,todoId:number){
-    return this.http.put(`http://intense-dusk-99464.herokuapp.com:80/todos/${todoId}`, todo)
+    return this.http.put(`https://intense-dusk-99464.herokuapp.com/todos/${todoId}`, todo)
   }
   done(todoId:number){
-    return this.http.put('http://intense-dusk-99464.herokuapp.com:80/todos',{todoId})
+    return this.http.put('https://intense-dusk-99464.herokuapp.com/todos',{todoId})
   }
 }
