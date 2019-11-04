@@ -8,11 +8,11 @@ const mysqlStore = require('express-mysql-session')(session);
 const path = require('path');
 const app = express();
 var options = {
-    host: 'sql9.freesqldatabase.com',
+    host: 'remotemysql.com',
     port: 3306,
-    user: 'sql9310613',
-    password: 'Wb3yisPqPr',
-    database: 'sql9310613'
+    user: 'FsLJgIYDg9',
+    password: 'tKeNx2Wm97',
+    database: 'FsLJgIYDg9'
 };
 var sessionStore = new mysqlStore(options);
 app.use(session({
