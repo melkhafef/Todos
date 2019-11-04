@@ -29,7 +29,7 @@ export class UserService {
     return this.http.get(`https://intense-dusk-99464.herokuapp.com/user/${id}/todos`);
   }
   deleteTodo(id:number) {
-    return this.http.delete(`http://intense-dusk-99464.herokuapp.com/todos/${id}`);
+    return this.http.delete(`https://intense-dusk-99464.herokuapp.com/todos/${id}`);
   }
   updateTodo(todo:Todo,todoId:number){
     return this.http.put(`https://intense-dusk-99464.herokuapp.com/todos/${todoId}`, todo)
