@@ -26,10 +26,13 @@ let conection = mysql.createConnection(options);
 conection.connect();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/dist/todo-task'));
+app.use(express.static(__dirname + '/dist/todoTask'));
 app.use(cors());
 app.get('/', (req, res) => {
     res.redirect('/login');
+})
+app.get('/login',(req,res)=>{
+    res.sendFile(path.join(__dirname+'/dist/todoTask/index.html'));
 })
 app.post('/login', function (req, res) {
     let sql = `select * from user where name='${req.body.name}' AND password=${req.body.password}`
