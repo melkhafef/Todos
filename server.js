@@ -28,8 +28,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/dist/todo-task'));
 app.use(cors());
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/dist/todo-task/index.html'))
+app.get('/', (req, res) => {
+    res.redirect('/login');
 })
 app.post('/login', function (req, res) {
     let sql = `select * from user where name='${req.body.name}' AND password=${req.body.password}`
