@@ -23,7 +23,10 @@ app.use(session({
     saveUninitialized: false
 }));
 let conection = mysql.createConnection(options);
-conection.connect();
+conection.connect((err,res)=>{
+if(err) throw err;
+console.log('connected');
+});
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/dist/todoTask'));
@@ -62,7 +65,7 @@ app.get('/user/:id/todos', function (req, res) {
     })
 })
 app.put('/todos/:id', function (req, res) {
-    let sql = `update todo SET title='${req.body.title}',description='${req.body.description}',duedate='${req.body.duedate}'    where id=${req.params.id}`
+    let sql = `update todo SET title='${req.body.title}',description='${req.body.description}',duedate='${req.body.duedate}',isdone='${req.body.isdone}'    where id=${req.params.id}`
     conection.query(sql, (err, result) => {
         if (err) throw err;
         res.end();
@@ -83,8 +86,8 @@ app.post('/user/:id/todos', function (req, res) {
         res.end();
     })
 })
-app.put('/todos', (req, res) => {
-    let sql = `update todo set isdone=true where id=${req.body.todoId}`
+app.put('/update', (req, res) => {
+    let sql = `update todo set isdone=${req.body.todoState} where id=${req.body.todoId}`
     conection.query(sql, (err, resulte) => {
         if (err) throw err;
         res.end();

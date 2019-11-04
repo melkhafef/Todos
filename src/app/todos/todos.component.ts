@@ -11,6 +11,7 @@ export class TodosComponent implements OnInit {
   todos;
   userId;
   todoId;
+  todoIsDone;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
@@ -42,10 +43,12 @@ export class TodosComponent implements OnInit {
       this.ngOnInit();
     })
   }
-  done(e:any){
+  todoState(e:any){
     this.todoId = parseInt(e.path[3].cells[0].innerText);
-    this.userService.done(this.todoId).subscribe();
-
+    this.todoIsDone = e.target.checked;
+    this.userService.updateState(this.todoId,this.todoIsDone).subscribe(res=>{
+      this.ngOnInit();
+    })
   }
 
 }

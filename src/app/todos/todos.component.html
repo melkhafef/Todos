@@ -32,7 +32,7 @@
             <td>{{t.duedate}}</td>
             <td>{{t.description}}</td>
             <td><div class="form-check">
-                <input type="checkbox" class="form-check-input" (click)="done($event)" [checked]="t.isDone" (change)="t.isDone= !t.isDone">
+                <input type="checkbox" class="form-check-input" [checked]="t.isdone" (change)="todoState($event)">
             </div></td>
             <td><button class="btn btn-danger" (click)="removeTodo($event)">Delete</button></td>
             <td><button class="btn btn-info" data-toggle="modal" data-target="#update-todo" (click)="selectTodo($event)">Update</button>
@@ -50,7 +50,7 @@
                       <input name="title" type="text" class="form-control" placeholder="title" [(ngModel)]="todo.title" required>
                       <input name="description" type="text" class="form-control" placeholder="description"
                         [(ngModel)]="todo.description" required>
-                      <input name="duedate" type="date" for class="form-control" [(ngModel)]="todo.duedate" required>
+                      <input name="duedate" type="date"  class="form-control" [(ngModel)]="todo.duedate" required>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
